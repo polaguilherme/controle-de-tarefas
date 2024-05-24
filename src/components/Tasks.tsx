@@ -95,9 +95,15 @@ export function Tasks() {
           <div className="flex">
             <p className="text-[#8284FA] font-bold leading-normal text-sm gap-2">
               Tarefas Concluídas{" "}
-              <span className="text-white bg-[#333] py-0.5 px-2 rounded-full">
-                {conclusedTasks} de {createdTasks}
-              </span>
+              {tasks.length === 0 ? (
+                <span className="text-white bg-[#333] py-0.5 px-2 rounded-full">
+                  0
+                </span>
+              ) : (
+                <span className="text-white bg-[#333] py-0.5 px-2 rounded-full">
+                  {conclusedTasks} de {createdTasks}
+                </span>
+              )}
             </p>
           </div>
         </header>
