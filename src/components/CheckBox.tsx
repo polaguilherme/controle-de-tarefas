@@ -17,11 +17,15 @@ export function CheckboxComponent({
         <Checkbox.Root
           onCheckedChange={handleConclusedTasks}
           checked={checked}
-          className=" flex w-6 h-6 appearance-none items-center justify-center rounded-full bg-[#262626] border border-[#4EA8DE]  outline-none "
+          className={`flex w-6 h-6 appearance-none items-center justify-center rounded-full bg-transparent border border-Blue-primary outline-none transition-all duration-500 ${
+            checked && "border-0"
+          }`}
           defaultChecked={false}
           id="c1"
         >
-          <Checkbox.Indicator className="text-white bg-[#8284FA] rounded-full w-5 h-5 flex items-center justify-center checked:border-none">
+          <Checkbox.Indicator
+            className={`text-white bg-Purple-primary rounded-full w-6 h-6 flex items-center justify-center transition-all duration-500`}
+          >
             <CheckIcon />
           </Checkbox.Indicator>
         </Checkbox.Root>

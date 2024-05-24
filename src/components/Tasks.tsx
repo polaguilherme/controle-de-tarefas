@@ -67,7 +67,7 @@ export function Tasks() {
         >
           <input
             type="text"
-            className="flex-grow p-4 items-center bg-[#262626] rounded-lg text-white"
+            className="flex-grow p-4 items-center bg-Gray-500 rounded-lg text-white placeholder:text-Gray-300"
             placeholder="Adicione uma nova tarefa"
             value={newTask}
             onChange={handleNewTaskOnInput}
@@ -75,7 +75,7 @@ export function Tasks() {
           />
           <button
             disabled={isNewTaskEmpty}
-            className="bg-[#1E6F9F] p-4 flex items-center justify-center font-bold text-white gap-2 rounded-lg disabled:cursor-not-allowed disabled:opacity-90"
+            className="bg-Blue-dark p-4 flex items-center justify-center font-bold text-Gray-100 gap-2 rounded-lg disabled:cursor-not-allowed disabled:opacity-90"
           >
             Criar
             <PlusCircle size={24} />
@@ -85,22 +85,22 @@ export function Tasks() {
       <div className="w-full flex items-center justify-center mt-16 flex-col">
         <header className="flex justify-between w-full max-w-2xl">
           <div className="flex">
-            <p className="text-[#4EA8DE] font-bold leading-normal text-sm gap-2">
+            <p className="text-Blue-primary font-bold leading-normal text-sm gap-2">
               Tarefas Criadas{" "}
-              <span className="text-white bg-[#333] py-0.5 px-2 rounded-full">
+              <span className="text-Gray-200 bg-Gray-400 py-0.5 px-2 rounded-full">
                 {createdTasks}
               </span>
             </p>
           </div>
           <div className="flex">
-            <p className="text-[#8284FA] font-bold leading-normal text-sm gap-2">
+            <p className="text-Purple-primary font-bold leading-normal text-sm gap-2">
               Tarefas Concluídas{" "}
               {tasks.length === 0 ? (
-                <span className="text-white bg-[#333] py-0.5 px-2 rounded-full">
+                <span className="text-Gray-200 bg-Gray-400 py-0.5 px-2 rounded-full">
                   0
                 </span>
               ) : (
-                <span className="text-white bg-[#333] py-0.5 px-2 rounded-full">
+                <span className="text-Gray-200 bg-Gray-400 py-0.5 px-2 rounded-full">
                   {conclusedTasks} de {createdTasks}
                 </span>
               )}
@@ -108,12 +108,12 @@ export function Tasks() {
           </div>
         </header>
         {tasks.length === 0 ? (
-          <section className="mt-6 py-16 px-4 border-t border-[#333] rounded-lg flex items-center justify-center flex-col w-full max-w-2xl">
+          <section className="mt-6 py-16 px-4 border-t border-Gray-400 rounded-lg flex items-center justify-center flex-col w-full max-w-2xl">
             <img src={ClipBoard} alt="" className="mb-4" />
-            <strong className="leading-6 text-base font-inter text-[#808080]">
+            <strong className="leading-6 text-base font-inter text-Gray-300">
               Você ainda não tem tarefas cadastradas
             </strong>
-            <p className="font-normal leading-6 text-base font-inter text-[#808080]">
+            <p className="font-normal leading-6 text-base font-inter text-Gray-300">
               Crie tarefas e organize seus itens a fazer
             </p>
           </section>

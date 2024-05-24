@@ -28,8 +28,8 @@ export function TaskItem({
   }
 
   return (
-    <div className="flex p-4 items-start justify-between gap-4 w-full bg-[#262626] rounded-lg mt-3">
-      <div className="rounded-full bg-black">
+    <div className="flex p-4 items-start justify-between gap-4 w-full bg-Gray-500 rounded-lg mt-3">
+      <div className="rounded-full">
         <CheckboxComponent
           handleConclusedTasks={handleConclusedTasks}
           checked={task.isCompleted}
@@ -37,18 +37,21 @@ export function TaskItem({
       </div>
       <div className="flex flex-1">
         {task.isCompleted ? (
-          <p className="font-inter text-base leading-5 line-through text-[#F2F2F2]">
+          <p className="font-inter text-base leading-5 line-through text-Gray-300 transition-colors duration-500">
             {task.content}
           </p>
         ) : (
-          <p className="font-inter text-base leading-5 text-[#F2F2F2]">
+          <p className="font-inter text-base leading-5  text-Gray-100 transition-colors duration-500">
             {task.content}
           </p>
         )}
       </div>
       <div>
-        <button onClick={handleDeleteTask} className="hover:bg-">
-          <Trash size={20} className="text-[#808080]" />
+        <button
+          onClick={handleDeleteTask}
+          className=" hover:bg-Gray-400 hover:w-6 hover:h-6 flex items-center justify-center hover:rounded "
+        >
+          <Trash size={20} className="text-Gray-300 hover:text-red-500" />
         </button>
       </div>
     </div>
