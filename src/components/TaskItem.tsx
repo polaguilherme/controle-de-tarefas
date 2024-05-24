@@ -36,9 +36,15 @@ export function TaskItem({
         />
       </div>
       <div className="flex flex-1">
-        <p className="font-inter text-base leading-5 text-[#F2F2F2]">
-          {task.content}
-        </p>
+        {task.isCompleted ? (
+          <p className="font-inter text-base leading-5 line-through text-[#F2F2F2]">
+            {task.content}
+          </p>
+        ) : (
+          <p className="font-inter text-base leading-5 text-[#F2F2F2]">
+            {task.content}
+          </p>
+        )}
       </div>
       <div>
         <button onClick={handleDeleteTask} className="hover:bg-">
