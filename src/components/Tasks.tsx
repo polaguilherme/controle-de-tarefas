@@ -1,7 +1,7 @@
 import { PlusCircle } from "phosphor-react";
 import ClipBoard from "../assets/Clipboard.png";
 import { TaskItem } from "./TaskItem";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 interface Task {
@@ -16,6 +16,13 @@ export function Tasks() {
   const [createdTasks, setCreatedTasks] = useState(0);
   const [conclusedTasks, setConclusedTasks] = useState(0);
 
+  useEffect(() => {
+    const storedTasks = localStorage.getItem("tasks");
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks));
+    }
+  }, []);
+
   function addNewTasksOnList(event: FormEvent) {
     event.preventDefault();
 
@@ -25,9 +32,12 @@ export function Tasks() {
       isCompleted: false,
     };
 
-    setTasks([...tasks, newTaskObject]);
+    const updatedTasks = [...tasks, newTaskObject];
+    setTasks(updatedTasks);
     setNewTask("");
     setCreatedTasks((state) => state + 1);
+
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   }
 
   function handleNewTaskOnInput(event: ChangeEvent<HTMLInputElement>) {
@@ -38,6 +48,7 @@ export function Tasks() {
     const newTasksUpdated = tasks.filter((task) => task.id !== taskId);
     setTasks(newTasksUpdated);
     setCreatedTasks((prevCount) => prevCount - 1);
+    localStorage.setItem("tasks", JSON.stringify(newTasksUpdated));
   }
 
   function onConclusedTasks(taskId: string) {
@@ -54,6 +65,7 @@ export function Tasks() {
     });
 
     setTasks(updatedTasksOnConclused);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasksOnConclused));
   }
 
   const isNewTaskEmpty = newTask.length === 0;
